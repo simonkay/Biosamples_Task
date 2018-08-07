@@ -1,0 +1,32 @@
+version = '0.0.1-DEV'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+ 
+  compile 'commons-lang:commons-lang:2.6'
+  compile 'org.apache.httpcomponents:httpclient:4.5.6'
+  compile 'org.json:json:20131018'
+  
+//  testCompile '"junit:junit:4.11"'
+}
+
+jar {
+  manifest {
+    attributes 'Implementation-Title': 'BioSamples Client App Jar',
+               'Implementation-Version': version,
+               'Main-Class': 'uk.ac.ebi.ena.task.BioSamplesApp'
+  }
+}
+
+
+repositories{
+    mavenLocal()
+    maven { url "http://ena-dev:8081/artifactory/all" }
+    mavenCentral()
+}
